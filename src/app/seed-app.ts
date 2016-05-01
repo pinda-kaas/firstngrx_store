@@ -1,16 +1,21 @@
 import {Component} from 'angular2/core';
 import {Router, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-
+import {Receiver} from './components/receiver';
+import {Sender} from './components/sender';
 import {Home} from './components/home/home';
 import {About} from './components/about/about';
 import {RepoBrowser} from './components/repo-browser/repo-browser';
+import {Store, provideStore} from '@ngrx/store';
+import {Observable} from "rxjs/Observable";
+import {messageReducer} from "./reducers/messageReducer";
+
 
 @Component({
   selector: 'seed-app',
   providers: [],
   pipes: [],
-  directives: [ROUTER_DIRECTIVES],
-  templateUrl: 'app/seed-app.html',
+  templateUrl: './app/seed-app.html',
+  directives: [ROUTER_DIRECTIVES,Receiver,Sender]
 })
 @RouteConfig([
   { path: '/home',       component: Home,        name: 'Home', useAsDefault: true },
@@ -18,7 +23,17 @@ import {RepoBrowser} from './components/repo-browser/repo-browser';
   { path: '/github/...', component: RepoBrowser, name: 'RepoBrowser' },
 ])
 export class SeedApp {
+  public people;
+  private id = 0;
 
-  constructor() {}
+  private _store : Store<any>;
+
+  sendMessage(){
+    debugger;
+    this._store.dispatch({type: "SEND_MESSAGE", payload: {
+     data:'testing'
+    }})
+  }
+
 
 }
