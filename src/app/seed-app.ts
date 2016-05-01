@@ -26,7 +26,9 @@ export class SeedApp {
   public people;
   private id = 0;
 
-  private _store : Store<any>;
+  constructor(private store: Store<provideStore(any)>) {
+    //this.items = store.select('items'); // Bind an observable of our items to "ItemsService"
+  }
 
   sendMessage(){
     debugger;
