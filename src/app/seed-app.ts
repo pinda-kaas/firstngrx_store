@@ -20,21 +20,20 @@ import {messageReducer} from "./reducers/messageReducer";
 
 export class SeedApp {
 
-  private message;
-
-  constructor(
-    private _store : Store<any>
-  ){
-      _store.select('messageReducer')
-    Receiver.subscribe();
-  }
-
-  sendMessage(){
-    debugger;
-    this._store.dispatch({type: "SEND_MESSAGE", payload: {
-     data:'testing'
-    }})
-  }
-
+  //private message;
+  //
+  //constructor(
+  //  private _store : Store<any>
+  //){
+  //  let state$: Observable<string> = _store.select('messageReducer');
+  //}
+  //
+  //sendMessage(){
+  //  debugger;
+  //  this._store.dispatch({type: "SEND_MESSAGE", payload: {
+  //   data:'testing'
+  //  }})
+  //}
+  //
 
 }
