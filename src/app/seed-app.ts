@@ -17,17 +17,16 @@ import {messageReducer} from "./reducers/messageReducer";
   templateUrl: './app/seed-app.html',
   directives: [ROUTER_DIRECTIVES,Receiver,Sender]
 })
-@RouteConfig([
-  { path: '/home',       component: Home,        name: 'Home', useAsDefault: true },
-  { path: '/about',      component: About,       name: 'About' },
-  { path: '/github/...', component: RepoBrowser, name: 'RepoBrowser' },
-])
-export class SeedApp {
-  public people;
-  private id = 0;
 
-  constructor(private store: Store<provideStore(any)>) {
-    //this.items = store.select('items'); // Bind an observable of our items to "ItemsService"
+export class SeedApp {
+
+  private message;
+
+  constructor(
+    private _store : Store<any>
+  ){
+      _store.select('messageReducer')
+    Receiver.subscribe();
   }
 
   sendMessage(){
